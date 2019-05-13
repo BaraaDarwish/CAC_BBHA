@@ -12,17 +12,17 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) # This is your Project Roo
 
 
 
-file4 = os.path.join(ROOT_DIR,"CNS.csv")
-file = os.path.join(ROOT_DIR,"Dataset.csv")
-file2 =os.path.join(ROOT_DIR,"Autism_.csv")
-file6 = os.path.join(ROOT_DIR,"Dataset.csv")
+
+
+Autism = os.path.join(ROOT_DIR,"Autism_.csv")
+Pregnancies = os.path.join(ROOT_DIR,"Pregnancies.csv")
 test_file = os.path.join(ROOT_DIR,"test_image.csv")
 train_file = os.path.join(ROOT_DIR,"train_image.csv")
 heart = os.path.join(ROOT_DIR,"heartB.csv")
 diabetes = os.path.join(ROOT_DIR,"diabetesB.csv") 
-#test = pd.read_csv(test_file)
+#test = pd.read_csv(test_file)          #to test this file uncomment these 2 lines and remove lines (205,206,207)
 #train = pd.read_csv(train_file)
-data = pd.read_csv(diabetes)
+data = pd.read_csv(diabetes)            #change the parameter to test different dataset
 data = data.drop('Unnamed: 0' , axis=1)
 feat_num = len(data.iloc[0])
 random.seed(datetime.now)
@@ -205,9 +205,6 @@ if __name__ == "__main__":
     msk = np.random.rand(len(data)) < 0.8
     train = data[msk]
     test = data[~msk]
-    
-
-
     mask = remove_repitition(train)
     train = pd.DataFrame(train.values[:,mask])
     test = pd.DataFrame(test.values[:,mask])
